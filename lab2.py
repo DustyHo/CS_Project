@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-file = pd.read_csv("Electric_Vehicle_Population_Data.csv", nrows = 500,)
+file = pd.read_csv("project\Electric_Vehicle_Population_Data.csv", nrows = 500,)
 
 file.dropna()
 file.drop_duplicates()
@@ -25,13 +25,14 @@ print(file_name['Postal Code'].mode().to_string())
 x = np.array([file_name['Model Year']])
 y = np.array([file_name['Electric Range']])
 
-font1 = {'family': 'serif', 'color': 'blue', 'size' :20}
-font2 = {'family': 'serif', 'color': 'red', 'size' :15}
+font1 = {'family': 'serif', 'color': 'blue', 'size' :15}
+font2 = {'family': 'serif', 'color': 'red', 'size' :10}
 plt.title('Electric Car range vs Year', fontdict=font1)
 plt.xlabel('Model Year', fontdict=font2)
 plt.ylabel('Electric Range', fontdict=font2)
+plt.subplot(2,2,1)
 plt.scatter(x, y)
-plt.show()
+
 
 ModelYear = file_name['Model Year'].value_counts().rename_axis('Year').reset_index(name= 'counts')
 modelYear = ModelYear.sort_values(by = 'Year', ascending=True)
@@ -41,8 +42,8 @@ plt.xlabel('Model Year', fontdict=font2)
 plt.ylabel('Number of Cars', fontdict=font2)
 x1 = np.array([modelYear['Year']]).flatten()
 y1 = np.array([modelYear['counts']]).flatten()
+plt.subplot(2,2,2)
 plt.bar(x1, y1)
-plt.show()
 
 MakeCount = file_name['Make'].value_counts().rename_axis('Make').reset_index(name= 'counts')
 makeCount = MakeCount.sort_values(by='Make', ascending=False)
@@ -52,13 +53,14 @@ plt.xlabel('Number of Cars', fontdict=font2)
 plt.ylabel('Make', fontdict=font2)
 x2 = np.array([makeCount['counts']]).flatten()
 y2 = np.array([makeCount['Make']]).flatten()
+plt.subplot(2,2,3)
 plt.barh(y2, x2)
-plt.show()
 
 TypeCount = file_name['Electric Vehicle Type'].value_counts().rename_axis('Type').reset_index(name = 'counts')
 print('\n', TypeCount)
 plt.title('Electric Vehicle Types', fontdict=font1)
 arr = np.array([TypeCount['counts']]).flatten()
 lable = TypeCount['Type'].to_list()
+plt.subplot(2,2,4)
 plt.pie(arr, labels=lable)
 plt.show()
