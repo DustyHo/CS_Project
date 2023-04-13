@@ -25,8 +25,8 @@ print(file_name['Postal Code'].mode().to_string())
 x = np.array([file_name['Model Year']])
 y = np.array([file_name['Electric Range']])
 
-font1 = {'family': 'serif', 'color': 'blue', 'size' :15}
-font2 = {'family': 'serif', 'color': 'red', 'size' :10}
+font1 = {'family': 'serif', 'color': 'blue', 'size' :20}
+font2 = {'family': 'serif', 'color': 'red', 'size' :15}
 plt.title('Electric Car range vs Year', fontdict=font1)
 plt.xlabel('Model Year', fontdict=font2)
 plt.ylabel('Electric Range', fontdict=font2)
@@ -53,6 +53,7 @@ plt.xlabel('Number of Cars', fontdict=font2)
 plt.ylabel('Make', fontdict=font2)
 x2 = np.array([makeCount['counts']]).flatten()
 y2 = np.array([makeCount['Make']]).flatten()
+plt.tight_layout()
 plt.subplot(2,2,3)
 plt.barh(y2, x2)
 
