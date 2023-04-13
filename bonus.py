@@ -6,7 +6,7 @@ df = pd.read_csv('Electric_Vehicle_Population_Data.csv',nrows=500)
 train_size=0.8
 file_name = df[['Model Year','Postal Code','Make','Model','Electric Vehicle Type','Electric Range']]
 
-x = file_name.drop(columns=['Electric Range']).copy()
+x = file_name.drop(columns=['Electric Range'])
 print(x)
 y = df['Electric Range']
 print(y)
